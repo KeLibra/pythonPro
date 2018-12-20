@@ -17,7 +17,7 @@ userName = '15039062363'
 # 密码
 userPasd = '123456'
 
-investId = '37363'  # 投资项目id
+investId = '37364'  # 投资项目id
 investMoney = '10000'  # 投资金额
 voucher_id = '0'  # 券的id
 
@@ -60,7 +60,7 @@ def invest():
 
     print ('===  invest ......')
     # http://121.199.1.198/koudai_deposit/frontend/web/deposit/project/invest
-    requrl = localHostUrl + "/deposit/project/invest?clientType=android"
+    requrl = localHostUrl + "/deposit/project/invest?clientType=ios"
     signStr = 'id=' + investId + '&money=' + investMoney + '&order_id=' + orderId + '&redpacket_money=0.00&voucher_id=' + voucher_id + '**kdlc**'
 
     print'===sign_before  ', signStr
@@ -82,7 +82,7 @@ SECONDS_PER_DAY = 24 * 60 * 60
 
 def doFirst():
     curTime = datetime.now()
-    desTime = curTime.replace(hour=15, minute=00, second=5, microsecond=0)
+    desTime = curTime.replace(hour=16, minute=00, second=2, microsecond=0)
     print 'desTime:  ', desTime
     delta = desTime - curTime
     sleeptime = delta.total_seconds()

@@ -62,7 +62,7 @@ def invest():
     orderId = getOrder();
 
     print ('===  invest ......')
-    requrl = localHostUrl + "/project/invest-v2"
+    requrl = localHostUrl + "/deposit/project/invest?clientType=ios"
     signStr = 'id=' + investId + '&money=' + investMoney + '&order_id=' + orderId + '&redpacket_money=0.00&voucher_id=' + voucher_id + '**kdlc**'
 
     print'===sign  ', signStr
@@ -72,7 +72,7 @@ def invest():
     print signStr
     # voucher_id = 0 & money = 50 & order_id = 2017071445177_859683c0f77f08 & is_kdb_pay = 0 & pay_password = 123456 & sign = aWQ9Mzg2MzMmaXNfa2RiX3BheT0wJm1vbmV5PTUwLjAmb3JkZXJfaWQ9MjAxNzA3MTQ0NTE3N184NTk2ODNjMGY3N2YwOCZwYXlfcGFzc3dvcmQ9MTIzNDU2JnJlZHBhY2tldF9tb25leT0wLjAwJnZvdWNoZXJfaWQ9MCoqa2RsYyoq & id = 38633 & redpacket_money = 0
     # test_data_urlencode = urllib.urlencode(test_data)
-    test_data_urlencode = 'id=' + investId + '&money=' + investMoney + '&order_id=' + orderId + '&redpacket_money=0.00&voucher_id=' + voucher_id + '&sign=' + signStr
+    test_data_urlencode = 'id=' + investId + '&money=' + investMoney + '&order_id=' + orderId + '&redpacket_money=0.00&voucher_id=' + voucher_id + '&invest_sign=' + signStr
     req = urllib2.Request(url=requrl, data=test_data_urlencode)
     # print req2
     res_data = urllib2.urlopen(req)
@@ -90,16 +90,16 @@ def doFirst():
     delta = desTime - curTime
     sleeptime = delta.total_seconds()
     print "Now day must sleep %d seconds" % sleeptime
-    sleep(sleeptime)
+    # sleep(sleeptime)
     count = 0
-    sleepcount = 3
+    sleepcount = 10
     while (True):
         if (count < 2):
             print '====执行invest, 第 %d 次   ' % (count + 1)
             print "===currentTime: ", datetime.now()
+            sleep(sleepcount)
             invest()
             count = count + 1;
-            sleep(sleepcount)
             # sleepcount = sleepcount + 1
         else:
             return
